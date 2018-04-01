@@ -47,7 +47,23 @@ public abstract class Critter {
 		myPackage = Critter.class.getPackage().toString().split(" ")[1];
 	}
 	
-	protected final String look(int direction, boolean steps) {return "";}
+	protected final String look(int direction, boolean steps) {
+
+	    energy -= Params.look_energy_cost;
+	    int dist = 1;
+
+	    if(steps){
+	        ++dist;
+        }
+
+	    if(isEmpty(direction, dist)){
+	        return "";
+        }
+        else{
+	        ArrayList<Integer> coord = getNewCoord(direction, dist);
+	        return map.get(coord.get(1)).get(coord.get(0)).toString();
+        }
+	}
 	
 	/* rest is unchanged from Project 4 */
 	
@@ -365,28 +381,40 @@ public abstract class Critter {
         }
 
         int new_dir = getRandomInt(8);
-        if(isEmpty(new_dir)){
+        if(isEmpty(new_dir, 1)){
             walk(new_dir);
         }
     }
 
-    private boolean isEmpty(int dir){
+    private boolean isEmpty(int dir, int steps){
+
+        ArrayList<Integer> coord = getNewCoord(dir, steps);
+
+        if(map.get(coord.get(1)).get(coord.get(0)).size() > 0){
+            return false;
+        }
+
+        return true;
+    }
+
+    private ArrayList<Integer> getNewCoord(int dir, int steps){
 
         int new_x = x_coord;
         int new_y = y_coord;
+        ArrayList<Integer> coord = new ArrayList<>();
 
         if(dir == 0 || dir == 1 || dir == 7){
-            ++new_x;
+            new_x += steps;
         }
         else if(dir == 3 || dir == 4 || dir ==5){
-            --new_x;
+            new_x -= steps;
         }
 
         if(dir == 1 || dir == 2 || dir ==3){
-            --new_y;
+            new_y -= steps;
         }
         else if(dir == 5 || dir == 6 || dir == 7){
-            ++new_y;
+            new_y += steps;
         }
 
         if(new_x >= Params.world_width){
@@ -403,11 +431,10 @@ public abstract class Critter {
             new_y += Params.world_height;
         }
 
-        if(map.get(new_y).get(new_x).size() > 0){
-            return false;
-        }
+        coord.add(new_x);
+        coord.add(new_y);
 
-        return true;
+        return coord;
     }
 
         public static List<Critter> getInstances(String critter_class_name) throws InvalidCritterException {
@@ -479,6 +506,5 @@ public abstract class Critter {
             babies.clear();
             initializeMap();
         }
-	
-	
+        
 }
