@@ -11,7 +11,8 @@ public abstract class Critter {
 		SQUARE,
 		TRIANGLE,
 		DIAMOND,
-		STAR
+		STAR,
+        HOURGLASS
 	}
 	
 	/* the default color is white, which I hope makes critters invisible by default
@@ -506,5 +507,5 @@ public abstract class Critter {
             babies.clear();
             initializeMap();
         }
-        
+
 }

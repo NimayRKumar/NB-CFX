@@ -29,8 +29,14 @@ public class Critter3 extends Critter{
         dir = getRandomInt(8);
     }
 
+    @Override
     public CritterShape viewShape() {
-        return null;
+
+        return CritterShape.STAR;
+    }
+    public javafx.scene.paint.Color viewColor() {
+
+        return javafx.scene.paint.Color.BROWN;
     }
 
     /**

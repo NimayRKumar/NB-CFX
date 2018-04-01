@@ -1,8 +1,6 @@
-
-
 package assignment5;
 /* CRITTERS Main.java
- * EE422C Project 4 submission by
+ * EE422C Project 5 submission by
  * Nimay Kumar
  * nrk472
  * 15470
@@ -12,6 +10,7 @@ package assignment5;
  * Slip days used: <0>
  * Spring 2018
  */
+
 
 //Virus critter
 public class Critter1 extends Critter {
@@ -31,7 +30,12 @@ public class Critter1 extends Critter {
 
     @Override
     public CritterShape viewShape() {
-        return null;
+
+        return CritterShape.TRIANGLE;
+    }
+    public javafx.scene.paint.Color viewColor() {
+
+        return javafx.scene.paint.Color.PURPLE;
     }
 
     /**

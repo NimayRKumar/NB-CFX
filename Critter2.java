@@ -1,6 +1,6 @@
 package assignment5;
 /* CRITTERS Main.java
- * EE422C Project 4 submission by
+ * EE422C Project 5 submission by
  * Nimay Kumar
  * nrk472
  * 15470
@@ -26,8 +26,14 @@ public class Critter2 extends Critter{
         dir = getRandomInt(8);
     }
 
+    @Override
     public CritterShape viewShape() {
-        return null;
+
+        return CritterShape.DIAMOND;
+    }
+    public javafx.scene.paint.Color viewColor() {
+
+        return javafx.scene.paint.Color.RED;
     }
 
     /**
