@@ -59,13 +59,15 @@ public abstract class Critter {
 	        ++dist;
         }
 
-	    if(isEmpty(direction, dist)){
-	        return "";
-        }
-        else{
+	    if(!isEmpty(direction, dist)){
 	        ArrayList<Integer> coord = getNewCoord(direction, dist);
-	        return map.get(coord.get(1)).get(coord.get(0)).toString();
+	        for(Critter c : population){
+	            if(c.old_x_coord == coord.get(0) && c.old_y_coord == coord.get(1)){
+	                return c.toString();
+                }
+            }
         }
+        return "";
 	}
 	
 	/* rest is unchanged from Project 4 */
@@ -89,7 +91,8 @@ public abstract class Critter {
 	
 	private int x_coord;
 	private int y_coord;
-
+	private int old_x_coord;
+	private int old_y_coord;
 
     private boolean alive;
     private boolean moved;
@@ -199,7 +202,16 @@ public abstract class Critter {
         babyPopulate();
     }
 
+    private static void saveOldCoord(){
+
+        for(Critter c : population){
+            c.old_x_coord = c.x_coord;
+            c.old_y_coord = c.y_coord;
+        }
+    }
+
     private static void individualTimeStep(){
+        saveOldCoord();
         for(Critter c : population){
             c.doTimeStep();
         }
@@ -212,6 +224,7 @@ public abstract class Critter {
         }
         reincarnation.removeAll(reincarnated);
         reincarnated.clear();
+        saveOldCoord();
     }
 
     private static void postEncounterTimeStep(){
@@ -406,8 +419,10 @@ public abstract class Critter {
 
         ArrayList<Integer> coord = getNewCoord(dir, steps);
 
-        if(map.get(coord.get(1)).get(coord.get(0)).size() > 0){
-            return false;
+        for(Critter c : population){
+            if(c.old_x_coord == coord.get(0) && c.old_y_coord == coord.get(1)){
+                return false;
+            }
         }
 
         return true;
