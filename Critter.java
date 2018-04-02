@@ -356,33 +356,35 @@ public abstract class Critter {
 
             for(int j = 0; j < Params.world_height; ++j){
 
-                if(map.get(j).get(i).size() > 0){
-
                     cr = map.get(j).get(i).get(0).toString();
                     tile = Main.world[i][j];
 
+                    if(map.get(j).get(i).size() > 0) {
+                        switch (cr) {
 
-                    switch(cr) {
+                            case "@":
+                                tile.setTile(Color.GREEN);
+                                break;
+                            case "C":
+                                tile.setTile(Color.BLUE);
+                                break;
+                            case "1":
+                                tile.setTile(Color.PURPLE);
+                                break;
+                            case "2":
+                                tile.setTile(Color.LIGHTSALMON);
+                                break;
+                            case "3":
+                                tile.setTile(Color.BROWN);
+                                break;
+                            case "4":
+                                tile.setTile(Color.YELLOW);
+                        }
 
-                        case "@":
-                            tile.setTile(Color.GREEN);
-                            break;
-                        case "C":
-                            tile.setTile(Color.BLUE);
-                            break;
-                        case "1":
-                            tile.setTile(Color.PURPLE);
-                            break;
-                        case "2":
-                            tile.setTile(Color.LIGHTSALMON);
-                            break;
-                        case "3":
-                            tile.setTile(Color.BROWN);
-                            break;
-                        case "4":
-                            tile.setTile(Color.YELLOW);
                     }
-
+                    else{
+                        tile.setTile(Color.LIGHTGREY);
+                    }
 
 
                 }
@@ -393,7 +395,7 @@ public abstract class Critter {
 
 
 
-    }
+
 	/* Alternate displayWorld, where you use Main.<pane> to reach into your
 	   display component.
 	   // public static void displayWorld() {}
