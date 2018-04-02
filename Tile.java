@@ -29,11 +29,16 @@ public class Tile extends GridPane {
         this.y = y;
     }
 
-    public void setTile(Color fill){
+    public void setTile(Critter cr){
 
         Rectangle new_rect = new Rectangle(width, height);
+        Color color = Color.LIGHTGREY;
 
-        new_rect.setFill(fill);
+        if(cr != null){
+            color = cr.viewColor();
+        }
+
+        new_rect.setFill(color);
         new_rect.setStroke(Color.BLACK);
 
         getChildren().remove(rect);

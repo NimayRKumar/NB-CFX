@@ -96,6 +96,7 @@ public class Main extends Application {
             }
         }
     }
+
     private void makeCritter(ChoiceBox<String> drop_down, TextField input){
 
 	    String type = drop_down.getValue();
@@ -120,6 +121,8 @@ public class Main extends Application {
 
             --num;
         }
+
+        Critter.displayWorld();
     }
 
     private void worldStep(TextField input){

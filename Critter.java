@@ -356,42 +356,16 @@ public abstract class Critter {
 
             for(int j = 0; j < Params.world_height; ++j){
 
-                if(map.get(j).get(i).size() > 0) {
-                    cr = map.get(j).get(i).get(0).toString();
-                }
-                else{
-                    cr = "";
-                }
-
                 tile = Main.world[i][j];
 
-                    if(!cr.equals("")) {
+                if(map.get(j).get(i).size() > 0) {
+                    tile.setTile(map.get(j).get(i).get(0));
 
-                        switch (cr) {
+                }
+                else{
+                    tile.setTile(null);
+                }
 
-                            case "@":
-                                tile.setTile(Color.GREEN);
-                                break;
-                            case "C":
-                                tile.setTile(Color.BLUE);
-                                break;
-                            case "1":
-                                tile.setTile(Color.PURPLE);
-                                break;
-                            case "2":
-                                tile.setTile(Color.LIGHTSALMON);
-                                break;
-                            case "3":
-                                tile.setTile(Color.BROWN);
-                                break;
-                            case "4":
-                                tile.setTile(Color.YELLOW);
-                        }
-
-                    }
-                    else{
-                        tile.setTile(Color.LIGHTGREY);
-                    }
                 }
             }
         }
