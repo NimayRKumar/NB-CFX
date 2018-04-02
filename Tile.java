@@ -36,7 +36,6 @@ public class Tile extends GridPane {
         new_rect.setFill(fill);
         new_rect.setStroke(Color.BLACK);
 
-
         getChildren().remove(rect);
         getChildren().add(new_rect);
 

@@ -356,10 +356,17 @@ public abstract class Critter {
 
             for(int j = 0; j < Params.world_height; ++j){
 
+                if(map.get(j).get(i).size() > 0) {
                     cr = map.get(j).get(i).get(0).toString();
-                    tile = Main.world[i][j];
+                }
+                else{
+                    cr = "";
+                }
 
-                    if(map.get(j).get(i).size() > 0) {
+                tile = Main.world[i][j];
+
+                    if(!cr.equals("")) {
+
                         switch (cr) {
 
                             case "@":
@@ -385,22 +392,9 @@ public abstract class Critter {
                     else{
                         tile.setTile(Color.LIGHTGREY);
                     }
-
-
                 }
-
             }
         }
-
-
-
-
-
-	/* Alternate displayWorld, where you use Main.<pane> to reach into your
-	   display component.
-	   // public static void displayWorld() {}
-	*/
-	
 
     public static void makeCritter(String critter_class_name) throws InvalidCritterException {
 

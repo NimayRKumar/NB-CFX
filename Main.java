@@ -12,6 +12,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
 
 //import java.awt.*;
 
@@ -19,17 +26,13 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 
-    private double width = 500;
-    private double height = 500;
+    private double width = 650;
+    private double height = 650;
 
     private double tile_width = width / Params.world_width;
     private double tile_height = height / Params.world_height;
 
-
-
-
-    private Pane layout = new Pane();
-    private GridPane grid = new GridPane();
+    private static GridPane grid = new GridPane();
     protected static Tile[][] world = new Tile[Params.world_width][Params.world_height];
     private Scene scene = new Scene(grid, width,  height);
 
@@ -48,9 +51,7 @@ public class Main extends Application {
 	    grid.setVgap(8);
 	    grid.setHgap(10);
 
-
 	    initWorld();
-
 
         ChoiceBox<String> drop_down = new ChoiceBox<>();
         TextField input = new TextField();
@@ -64,16 +65,19 @@ public class Main extends Application {
         drop_down.getItems().addAll("Algae", "Craig", "Critter1", "Critter2", "Critter3", "Critter4");
         input.setMaxWidth(74);
 
-        GridPane.setConstraints(make, 35, 0);
-        GridPane.setConstraints(step, 35, 1);
-        GridPane.setConstraints(input, 35, 2);
+        GridPane.setConstraints(make, 1, 81);
+        GridPane.setConstraints(step, 1, 83);
+        GridPane.setConstraints(input, 0, 83);
+        GridPane.setConstraints(drop_down, 0, 81);
+        GridPane.setConstraints(quit,2, 83);
+        GridPane.setConstraints(seed, 2, 81);
 
 	    make.setOnAction(e -> makeCritter(drop_down, input));
 	    step.setOnAction(e -> worldStep(input));
 	    seed.setOnAction(e -> setSeed(input));
 	    quit.setOnAction(e -> System.exit(0));
 
-        grid.getChildren().addAll(input, drop_down, make, step);
+        grid.getChildren().addAll(input, drop_down, make, step, quit, seed);
 
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
@@ -91,15 +95,11 @@ public class Main extends Application {
 	            world[i][j] = tile;
             }
         }
-
-
-
-
     }
     private void makeCritter(ChoiceBox<String> drop_down, TextField input){
 
 	    String type = drop_down.getValue();
-	    int num = 0;
+	    int num;
 
         if(!input.getText().equals("")){
 
@@ -124,7 +124,7 @@ public class Main extends Application {
 
     private void worldStep(TextField input){
 
-	    int num = 0;
+	    int num;
 
 	    if(!input.getText().equals("")){
 
@@ -162,6 +162,7 @@ public class Main extends Application {
 
         return num;
     }
+
 
 
 }
