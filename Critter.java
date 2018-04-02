@@ -1,5 +1,7 @@
 package assignment5;
 
+import javafx.scene.paint.Color;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -345,16 +347,59 @@ public abstract class Critter {
     }
 
 
-	public static void displayWorld(Object pane) {} 
+	public static void displayWorld() {
+
+        String cr;
+        Tile tile;
+
+        for(int i = 0; i < Params.world_width; ++i){
+
+            for(int j = 0; j < Params.world_height; ++j){
+
+                if(map.get(j).get(i).size() > 0){
+
+                    cr = map.get(j).get(i).get(0).toString();
+                    tile = Main.world[i][j];
+
+
+                    switch(cr) {
+
+                        case "@":
+                            tile.setTile(Color.GREEN);
+                            break;
+                        case "C":
+                            tile.setTile(Color.BLUE);
+                            break;
+                        case "1":
+                            tile.setTile(Color.PURPLE);
+                            break;
+                        case "2":
+                            tile.setTile(Color.LIGHTSALMON);
+                            break;
+                        case "3":
+                            tile.setTile(Color.BROWN);
+                            break;
+                        case "4":
+                            tile.setTile(Color.YELLOW);
+                    }
+
+
+
+                }
+
+            }
+        }
+
+
+
+
+    }
 	/* Alternate displayWorld, where you use Main.<pane> to reach into your
 	   display component.
 	   // public static void displayWorld() {}
 	*/
 	
-	/* create and initialize a Critter subclass
-	 * critter_class_name must be the name of a concrete subclass of Critter, if not
-	 * an InvalidCritterException must be thrown
-	 */
+
     public static void makeCritter(String critter_class_name) throws InvalidCritterException {
 
         try {
