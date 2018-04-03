@@ -1,5 +1,7 @@
 package assignment5;
 
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,18 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-
-
-//import java.awt.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class Main extends Application {
@@ -29,8 +22,18 @@ public class Main extends Application {
     private double width = 650;
     private double height = 650;
 
+    private Button make = new Button("Make");
+    private Button stats = new Button("Stats");
+    private Button step = new Button("Step");
+    private Button seed = new Button("Seed");
+    private Button quit = new Button("Quit");
+    private Button play = new Button("Play");
+    private Button pause = new Button("Pause");
+
     private double tile_width = width / Params.world_width;
     private double tile_height = height / Params.world_height;
+
+    private AtomicBoolean playing = new AtomicBoolean(true);
 
     private static GridPane grid = new GridPane();
     protected static Tile[][] world = new Tile[Params.world_width][Params.world_height];
@@ -56,11 +59,7 @@ public class Main extends Application {
         ChoiceBox<String> drop_down = new ChoiceBox<>();
         TextField input = new TextField();
 
-        Button make = new Button("Make");
-        Button stats = new Button("Stats");
-        Button step = new Button("Step");
-        Button seed = new Button("Seed");
-        Button quit = new Button("Quit");
+
 
         drop_down.getItems().addAll("Algae", "Craig", "Critter1", "Critter2", "Critter3", "Critter4");
         input.setMaxWidth(74);
@@ -71,13 +70,17 @@ public class Main extends Application {
         GridPane.setConstraints(drop_down, 0, 81);
         GridPane.setConstraints(quit,2, 83);
         GridPane.setConstraints(seed, 2, 81);
+        GridPane.setConstraints(play,3, 81 );
+        GridPane.setConstraints(pause, 3, 83);
 
 	    make.setOnAction(e -> makeCritter(drop_down, input));
 	    step.setOnAction(e -> worldStep(input));
 	    seed.setOnAction(e -> setSeed(input));
 	    quit.setOnAction(e -> System.exit(0));
+        play.setOnAction(e -> playWorld());
 
-        grid.getChildren().addAll(input, drop_down, make, step, quit, seed);
+
+        grid.getChildren().addAll(input, drop_down, make, step, quit, seed, pause, play);
 
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
@@ -167,5 +170,66 @@ public class Main extends Application {
     }
 
 
+
+
+    private void playWorld(){
+
+        AnimationTimer frame = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+                Critter.worldTimeStep();
+                Critter.displayWorld();
+            }
+        };
+
+        step.setDisable(true);
+        make.setDisable(true);
+        seed.setDisable(true);
+        frame.start();
+
+        pause.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                playing.set(false);
+
+                step.setDisable(false);
+                make.setDisable(false);
+                seed.setDisable(false);
+
+                frame.stop();
+            }
+        });
+
+            //Animation FrameRateMeter    animationtimer
+        
+            //pause.setOnAction(e-> update());
+
+
+//            while(playing.get()) {
+//
+//                try {
+//                    Thread.sleep(1000);
+//                }
+//                catch(InterruptedException e) {
+//                     break;
+//
+//                }
+//
+//                Critter.worldTimeStep();
+//                Critter.displayWorld();
+//                System.out.println("working");
+//            }
+
+    }
+
+    private void update(){
+	    System.out.println("Pause");
+	    playing.set(false);
+
+        step.setDisable(false);
+        make.setDisable(false);
+        seed.setDisable(false);
+    }
 
 }
