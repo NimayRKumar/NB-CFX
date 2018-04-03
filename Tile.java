@@ -8,8 +8,6 @@ public class Tile extends GridPane {
 
     private double width;
     private double height;
-    private double x;
-    private double y;
     private Rectangle rect;
 
     public Tile(double x, double y, double width, double height){
@@ -25,8 +23,6 @@ public class Tile extends GridPane {
 
         this.width = width;
         this.height = height;
-        this.x = x;
-        this.y = y;
     }
 
     public void setTile(Critter cr){

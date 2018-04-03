@@ -11,6 +11,8 @@ package assignment5;
  * Spring 2018
  */
 
+import javafx.scene.paint.Color;
+
 //Praying Mantis critter, reproduces and then eats companion
 public class Critter4 extends Critter{
 
@@ -34,7 +36,7 @@ public class Critter4 extends Critter{
     }
     public javafx.scene.paint.Color viewColor() {
 
-        return javafx.scene.paint.Color.DARKRED;
+        return Color.YELLOW;
     }
 
     /**
