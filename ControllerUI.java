@@ -25,6 +25,7 @@ public class ControllerUI {
     public Label statsBox;
     public TextField numBox;
     public CheckBox runstatBox;
+    public Button nukeBtn;
     public static AnimationTimer frame;
     private ArrayList<String> files;
     private static String myPackage;
@@ -201,6 +202,15 @@ public class ControllerUI {
         catch(InvalidCritterException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoClassDefFoundError e){
             System.out.println("error processing");
         }
+    }
+
+    public void nuke(){
+        Critter.clearWorld();
+        Critter.displayWorld();
+        if(runstatBox.isSelected()){
+            updateStats();
+        }
+
     }
 
     public void quit(){

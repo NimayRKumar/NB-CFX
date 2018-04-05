@@ -27,5 +27,6 @@
       <Slider fx:id="sliderBox" blockIncrement="1.0" layoutX="130.0" layoutY="156.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="14.0" prefWidth="178.0" showTickLabels="true" showTickMarks="true" value="3.0" />
       <ChoiceBox fx:id="critterBox" layoutX="140.0" layoutY="30.0" prefWidth="150.0" />
       <CheckBox fx:id="runstatBox" layoutX="25.0" layoutY="185.0" mnemonicParsing="false" text="Run Stats" />
+      <Button fx:id="restartBtn" layoutX="25.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#nuke" prefWidth="100.0" text="Nuke World" textFill="#e01616" />
    </children>
 </Pane>
