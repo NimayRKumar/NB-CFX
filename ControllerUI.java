@@ -40,6 +40,10 @@ public class ControllerUI {
                     prevStep = now;
                     Critter.worldTimeStep();
                     Critter.displayWorld();
+
+                    if(runstatBox.isSelected()){
+                        updateStats();
+                    }
                 }
             }
         };
@@ -182,7 +186,6 @@ public class ControllerUI {
         stepBtn.setDisable(able);
         makeBtn.setDisable(able);
         seedBtn.setDisable(able);
-        critterBox.setDisable(able);
         playBtn.setDisable(able);
     }
 
