@@ -91,9 +91,9 @@ public class Critter4 extends Critter{
      * Prints out how many cannibals currently on map
      * @param mantises list of all cannibals in population
      */
-    public static void runStats(java.util.List<Critter> mantises){
+    public static String runStats(java.util.List<Critter> mantises){
 
-        System.out.println(mantises.size() + " total Mantises");
+        return mantises.size() + " total Mantises\n";
     }
 
 }

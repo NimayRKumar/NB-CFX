@@ -91,8 +91,8 @@ public class Critter2 extends Critter{
      * Prints out number of Critter2 on map
      * @param herbivores list of all Critter2 alive
      */
-    public static void runStats(java.util.List<Critter> herbivores ){
+    public static String runStats(java.util.List<Critter> herbivores ){
 
-        System.out.println(herbivores.size() + " total Herbivores");
+        return herbivores.size() + " Vegans drinking kale smoothies\n";
     }
 }

@@ -123,9 +123,9 @@ public class Critter3 extends Critter{
      * Prints out number of carnivores on map
      * @param hindus list of all living hindus
      */
-    public static void runStats(java.util.List<Critter> hindus){
+    public static String runStats(java.util.List<Critter> hindus){
 
-        System.out.println(hindus.size() + " Hindus currently praying");
+        return hindus.size() + " Hindus currently praying\n";
     }
 
     /**

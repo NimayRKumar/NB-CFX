@@ -108,8 +108,7 @@ public class Critter1 extends Critter {
      * Prints out total number of Critter1 on map, as well as number of A and B type
      * @param viruses list of all living Critter1
      */
-    public static void runStats(java.util.List<Critter> viruses){
-
+    public static String runStats(java.util.List<Critter> viruses){
 
         int numA = 0;
         int numB = 0;
@@ -125,9 +124,7 @@ public class Critter1 extends Critter {
             }
         }
 
-        System.out.println(viruses.size() + " total Viruses");
-        System.out.println(numA + " type A viruses");
-        System.out.println(numB + " type B viruses");
+        return viruses.size() + " total Viruses\n" + numA + " type A viruses\n" + numB + " type B viruses\n";
     }
 }
 
