@@ -486,7 +486,7 @@ public abstract class Critter {
 
 
 	public static String runStats(List<Critter> critters) {
-        return "";
+        return critters.size() + " total Critters";
     }
 	
 	/* the TestCritter class allows some critters to "cheat". If you want to 

@@ -46,7 +46,7 @@ public class Critter4 extends Critter{
      */
     public void doTimeStep(){
 
-        int action = getRandomInt(2);
+        int action = getRandomInt(4);
         if(action == 1){
             run(dir);
         }
@@ -71,11 +71,16 @@ public class Critter4 extends Critter{
             }
             return true;
         }
-        else if(opponent.equals("@") || opponent.equals("H")){
+        else if(opponent.equals("@")){
             return true;
         }
-
-        return false;
+        else {
+            String discCrit = look(dir, false);
+            if(discCrit == null || "P".equals(discCrit) || "@".equals(discCrit)){
+                walk(dir);
+            }
+            return false;
+        }
     }
 
     /**

@@ -75,7 +75,6 @@ public class Critter2 extends Critter{
         if(opponent.equals("@")){
             return true;
         }
-
         return false;
     }
 
