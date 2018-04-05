@@ -119,6 +119,9 @@ public class ControllerUI {
         }
 
         Critter.displayWorld();
+        if(runstatBox.isSelected()){
+            updateStats();
+        }
     }
 
     public void worldStep(){
@@ -139,6 +142,9 @@ public class ControllerUI {
         }
 
         Critter.displayWorld();
+        if(runstatBox.isSelected()){
+            updateStats();
+        }
     }
 
     public void setSeed(){
@@ -186,7 +192,8 @@ public class ControllerUI {
             List<Critter> list = Critter.getInstances(critterName);
             Class critterClass = Class.forName(myPackage + "." + critterName); //Reflection
             Method methodCall = critterClass.getMethod("runStats", List.class);
-            methodCall.invoke(null, list);
+            String s = (String) methodCall.invoke(null, list);
+            statsBox.setText(s);
         }
         catch(InvalidCritterException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoClassDefFoundError e){
             System.out.println("error processing");

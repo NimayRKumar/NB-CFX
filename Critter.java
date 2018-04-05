@@ -468,13 +468,26 @@ public abstract class Critter {
         return coord;
     }
 
-        public static List<Critter> getInstances(String critter_class_name) throws InvalidCritterException {
-		return null;
+    public static List<Critter> getInstances(String critter_class_name) throws InvalidCritterException {
+        List<Critter> result = new java.util.ArrayList<Critter>();
+        try{
+            for(Critter c : population){
+                if(Class.forName(myPackage + "." + critter_class_name).isInstance(c)){
+                    result.add(c);
+                }
+            }
+        }
+        catch(ClassNotFoundException e){
+            throw new InvalidCritterException(critter_class_name);
+        }
+        return result;
 	}
 
 
 
-	public static void runStats(List<Critter> critters) {}
+	public static String runStats(List<Critter> critters) {
+        return "";
+    }
 	
 	/* the TestCritter class allows some critters to "cheat". If you want to 
 	 * create tests of your Critter model, you can create subclasses of this class
