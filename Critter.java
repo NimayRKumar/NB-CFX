@@ -379,9 +379,9 @@ public abstract class Critter {
                     tile.setTile(null);
                 }
 
-                }
             }
         }
+    }
 
     public static void makeCritter(String critter_class_name) throws InvalidCritterException {
 

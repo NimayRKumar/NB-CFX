@@ -36,8 +36,8 @@ public class Main extends Application {
     private static GridPane grid = new GridPane();
     private static GridPane tool = new GridPane();
     protected static Tile[][] world = new Tile[Params.world_width][Params.world_height];
-    private Scene scene = new Scene(grid, width,  height);
-    private Scene toolbox = new Scene(tool, 100, 100);
+    private Scene scene = new Scene(grid, width + 50,  height + 50);
+    private Scene toolbox = new Scene(tool, 400, 200);
 
 	public static void main(String[] args) {
 
