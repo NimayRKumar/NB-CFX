@@ -56,7 +56,7 @@ public abstract class Critter {
 	    int dist = 1;
 
 	    if(steps){
-	        ++dist;
+	        dist = 2;
         }
 
 	    if(!isEmpty(direction, dist)){
@@ -67,7 +67,7 @@ public abstract class Critter {
                 }
             }
         }
-        return "";
+        return null;
 	}
 	
 	/* rest is unchanged from Project 4 */

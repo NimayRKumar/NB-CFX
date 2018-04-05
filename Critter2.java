@@ -47,19 +47,20 @@ public class Critter2 extends Critter{
 
         int new_dir = getRandomInt(8);
 
-        if(getRandomInt(2) == 1){
-            walk(dir);
-        }
-
         if(getEnergy() > 120){
             Critter2 child = new Critter2();
             reproduce(child, getRandomInt(8));
         }
 
-        while(new_dir == dir){
-            new_dir = getRandomInt(8);
+        if("@".equals(this.look(dir, false))){
+            walk(dir);
         }
-
+        else if("@".equals(this.look(dir, true))){
+            run(dir);
+        }
+        else{
+            walk(new_dir);
+        }
         dir = new_dir;
     }
 
@@ -83,7 +84,7 @@ public class Critter2 extends Critter{
      */
     public String toString(){
 
-        return "2";
+        return "M";
     }
 
     /**

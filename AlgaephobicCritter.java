@@ -1,6 +1,8 @@
 package assignment5;
 //import project5.Critter.CritterShape;
 
+import javafx.scene.paint.Color;
+
 public class AlgaephobicCritter extends Critter {
 
 	@Override
@@ -46,6 +48,6 @@ public class AlgaephobicCritter extends Critter {
 	public CritterShape viewShape() { return CritterShape.DIAMOND; }
 
 	@Override
-	public javafx.scene.paint.Color viewOutlineColor() { return javafx.scene.paint.Color.SALMON; }
+	public javafx.scene.paint.Color viewColor() { return Color.PALEVIOLETRED; }
 
 }

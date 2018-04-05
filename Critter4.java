@@ -47,7 +47,6 @@ public class Critter4 extends Critter{
     public void doTimeStep(){
 
         int action = getRandomInt(2);
-
         if(action == 1){
             run(dir);
         }
@@ -81,11 +80,11 @@ public class Critter4 extends Critter{
 
     /**
      * String representation of Critter4
-     * @return 4 for mantis
+     * @return P for mantis
      */
     public String toString(){
 
-        return "4";
+        return "P";
     }
 
     /**

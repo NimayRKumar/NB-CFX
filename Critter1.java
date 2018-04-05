@@ -101,7 +101,7 @@ public class Critter1 extends Critter {
      */
     public String toString() {
 
-        return "1";
+        return "V";
     }
 
     /**

@@ -59,7 +59,7 @@ public class Main extends Application {
 	    initWorld();
 	    
         TextField input = new TextField();
-        drop_down.getItems().addAll("Algae", "Craig", "Critter1", "Critter2", "Critter3", "Critter4");
+        drop_down.getItems().addAll("Algae", "Craig", "Bacteria", "Vegan", "Hindu", "Mantis", "Algaephobic", "Tragic");
         input.setMaxWidth(74);
 
         slider.setMin(1);
@@ -119,6 +119,31 @@ public class Main extends Application {
     private void makeCritter(ChoiceBox<String> drop_down, TextField input){
 
 	    String type = drop_down.getValue();
+	    switch (type){
+            case "Algae":
+                break;
+            case "Craig":
+                break;
+            case "Bacteria":
+                type = "Critter1";
+                break;
+            case "Vegan":
+                type = "Critter2";
+                break;
+            case "Hindu":
+                type = "Critter3";
+                break;
+            case "Mantis":
+                type = "Critter4";
+                break;
+            case "Algaephobic":
+                type = "AlgaephobicCritter";
+                break;
+            case "Tragic":
+                type = "TragicCritter";
+                break;
+        }
+
 	    int num;
 
         if(!input.getText().equals("")){
