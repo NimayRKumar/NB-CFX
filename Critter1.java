@@ -12,6 +12,8 @@ package assignment5;
  */
 
 
+import javafx.scene.paint.Color;
+
 //Virus critter
 public class Critter1 extends Critter {
 
@@ -35,7 +37,7 @@ public class Critter1 extends Critter {
     }
     public javafx.scene.paint.Color viewColor() {
 
-        return javafx.scene.paint.Color.PURPLE;
+        return Color.LIGHTSTEELBLUE;
     }
 
     /**

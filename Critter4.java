@@ -32,11 +32,11 @@ public class Critter4 extends Critter{
     @Override
     public CritterShape viewShape() {
 
-        return CritterShape.HOURGLASS;
+        return CritterShape.STAR;
     }
     public javafx.scene.paint.Color viewColor() {
 
-        return Color.YELLOW;
+        return Color.DARKOLIVEGREEN;
     }
 
     /**
@@ -81,7 +81,7 @@ public class Critter4 extends Critter{
 
     /**
      * String representation of Critter4
-     * @return L for cannibaL
+     * @return 4 for mantis
      */
     public String toString(){
 

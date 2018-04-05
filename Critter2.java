@@ -11,6 +11,8 @@ package assignment5;
  * Spring 2018
  */
 
+import javafx.scene.paint.Color;
+
 //Herbivore critter
 public class Critter2 extends Critter{
 
@@ -33,15 +35,14 @@ public class Critter2 extends Critter{
     }
     public javafx.scene.paint.Color viewColor() {
 
-        return javafx.scene.paint.Color.RED;
+        return Color.OLDLACE;
     }
-
-    /**
-     * Does 1 time step of action for Critter2 objects
-     * 1/2 chance to walk. 1/2 chance to rest
-     * Reproduces at 120 energy
-     * Sets new direction that is different from current direction
-     */
+        /**
+         * Does 1 time step of action for Critter2 objects
+         * 1/2 chance to walk. 1/2 chance to rest
+         * Reproduces at 120 energy
+         * Sets new direction that is different from current direction
+         */
     public void doTimeStep(){
 
         int new_dir = getRandomInt(8);

@@ -11,6 +11,8 @@ package assignment5;
  * Spring 2018
  */
 
+import javafx.scene.paint.Color;
+
 //The Hindu, reincarnates after it dies after a grace period
 //Has chance to reproduce any Critter
 public class Critter3 extends Critter{
@@ -32,11 +34,11 @@ public class Critter3 extends Critter{
     @Override
     public CritterShape viewShape() {
 
-        return CritterShape.STAR;
+        return CritterShape.HOURGLASS;
     }
     public javafx.scene.paint.Color viewColor() {
 
-        return javafx.scene.paint.Color.BROWN;
+        return Color.DARKRED;
     }
 
     /**

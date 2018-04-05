@@ -22,9 +22,6 @@ public class Tile extends GridPane {
         cell = new Rectangle(width, height);
         cell.setFill(Color.LIGHTGREY);
         cell.setStroke(Color.BLACK);
-
-        cell.setX(x);
-        cell.setY(y);
         setTranslateX(x);
         setTranslateY(y);
         getChildren().add(cell);
@@ -71,7 +68,9 @@ public class Tile extends GridPane {
                     new_icon = new_dia;
                     break;
                 case STAR:
-                    new_icon = new Circle(x_coord, y_coord, radius);
+                    Polygon new_star = new Polygon();
+                    new_star.getPoints().addAll(x_coord, y_coord + 6, x_coord + width/2, y_coord + height, x_coord + width - 2, y_coord + 5, x_coord+ width/2, y_coord + height/2);
+                    new_icon = new_star;
                 break;
                 case HOURGLASS:
                     Polygon new_hg = new Polygon();
