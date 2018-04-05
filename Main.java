@@ -5,12 +5,16 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -63,30 +67,29 @@ public class Main extends Application {
         input.setMaxWidth(74);
 
         slider.setMin(1);
-        slider.setMax(5);
+        slider.setMax(100);
         slider.setValue(3);
 
+        GridPane.setConstraints(drop_down, 0, 1);
+        GridPane.setConstraints(input, 0, 2);
+        GridPane.setConstraints(slider, 0, 3);
+
+        GridPane.setConstraints(make, 1, 1);
+        GridPane.setConstraints(seed, 2, 1);
+        GridPane.setConstraints(play,3, 1 );
+        make.setMaxWidth(Double.MAX_VALUE);
+        seed.setMaxWidth(Double.MAX_VALUE);
+        play.setMaxWidth(Double.MAX_VALUE);
+
+        GridPane.setConstraints(step, 1, 2);
+        GridPane.setConstraints(quit,2, 2);
+        GridPane.setConstraints(pause, 3, 2);
+        step.setMaxWidth(Double.MAX_VALUE);
+        quit.setMaxWidth(Double.MAX_VALUE);
+        pause.setMaxWidth(Double.MAX_VALUE);
 
 
-
-
-
-
-
-
-        GridPane.setConstraints(drop_down, 0, 0);
-        GridPane.setConstraints(input, 0, 100);
-        GridPane.setConstraints(slider, 0, 93);
-
-        GridPane.setConstraints(make, 1, 81);
-        GridPane.setConstraints(seed, 2, 81);
-        GridPane.setConstraints(play,3, 81 );
-
-        GridPane.setConstraints(step, 1, 83);
-        GridPane.setConstraints(quit,2, 83);
-        GridPane.setConstraints(pause, 3, 83);
-        
-	     make.setOnAction(e -> makeCritter(drop_down, input));
+        make.setOnAction(e -> makeCritter(drop_down, input));
 	     step.setOnAction(e -> worldStep(input));
 	     seed.setOnAction(e -> setSeed(input));
 	    quit.setOnAction(e -> System.exit(0));
